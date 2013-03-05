@@ -1,0 +1,12 @@
+﻿@model IList<QrCode.Areas.Admin.Models.ScannableQrCode>
+
+@foreach(var code in @Model)
+{
+    <div style="text-align: center">
+        @Html.Raw(code.Qr.Render())
+    
+        <br />
+    
+        <a href="@code.DirectUrl" target="_blank">Scan</a>  
+    </div>
+    }

@@ -1,0 +1,23 @@
+﻿@model QrCode.Areas.Admin.Models.GenerateQrCodeViewModel
+
+@{
+    ViewBag.Title = "Generate a QR code";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using(Ajax.BeginForm("Generate", "QrCode", new AjaxOptions { HttpMethod = "GET",  InsertionMode = InsertionMode.Replace,  UpdateTargetId = "codes" }))
+{
+    @Html.Label("Campaign:")
+    @Html.DropDownListFor(m => m.SelectedCampaignId, new SelectList(Model.AvailableCampaigns, "Id", "Description"))
+    
+    @Html.Label("Number of QR codes:")
+    @Html.TextBoxFor(m => m.NumberOfQrCodesToGenerate)
+
+    @Html.Label("QR code size:")
+    @Html.TextBoxFor(m => m.QrCodeSize)
+
+    <button type="submit" name="Command" value="Generate">Generate</button>
+}
+
+<div id="codes"></div>
