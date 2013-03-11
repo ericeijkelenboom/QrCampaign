@@ -33,7 +33,7 @@ h1, h2, h3 {
 }
 
 section.main {
-    margin-top: 20px;
+    margin-top: 60px;
 }
 
 .navbar .brand {
@@ -139,7 +139,7 @@ footer span {
     border-width: 0;
 }
 
-/*.navbar .btn, .navbar .btn-group {
+.navbar .btn, .navbar .btn-group {
     margin-top: 16px;
 }
 
@@ -201,7 +201,7 @@ footer span {
     .btn-info.active {
         background-color: #0081C2 \9;
         background-color: #194D7B \9;
-    }*/
+    }
 
 /* End Boostrap overrides  */
 /***************************/

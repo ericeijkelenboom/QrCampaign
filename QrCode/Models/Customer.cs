@@ -11,6 +11,6 @@ namespace QrCode.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public virtual ICollection<Subscription> CampaignSubscriptions { get; set; }
+        public virtual ICollection<Subscription> Subscriptions { get; set; }
     }
 }

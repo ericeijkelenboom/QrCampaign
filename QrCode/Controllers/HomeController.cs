@@ -9,5 +9,11 @@ namespace QrCode.Controllers
             return View();
         }
 
+        public ActionResult Scan(int campaignId, int qrCodeId)
+        {
+            
+            return new RedirectResult("/#scan");
+        }
+
     }
 }

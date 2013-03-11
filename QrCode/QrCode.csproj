@@ -147,6 +147,7 @@
     <Compile Include="Areas\Admin\Models\ScannableQrCode.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\Api\ScanController.cs" />
     <Compile Include="Controllers\Api\SubscriptionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -156,10 +157,10 @@
     <Compile Include="Models\Subscription.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Qr.cs" />
-    <Compile Include="Models\Scan.cs" />
     <Compile Include="Models\Shop.cs" />
     <Compile Include="Persistence\DatabaseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Scan.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -187,6 +188,7 @@
     <Content Include="App\durandal\widget.js" />
     <Content Include="App\main.js" />
     <Content Include="App\services\backend.js" />
+    <Content Include="App\services\localstore.js" />
     <Content Include="App\services\logger.js" />
     <Content Include="App\viewmodels\scan.js" />
     <Content Include="App\viewmodels\subscriptions.js" />
