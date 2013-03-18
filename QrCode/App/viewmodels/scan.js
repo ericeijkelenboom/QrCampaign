@@ -18,7 +18,7 @@
             .then(function (data) {
                 localstore.setCustomerId(data.CustomerId);
 
-                vm.title('Congratulations');
+                vm.title('Congratulations!');
                 vm.numberOfPoints(data.Subscription.NumberOfPoints);
                 vm.campaignDescription(data.CampaignDescription);
             });

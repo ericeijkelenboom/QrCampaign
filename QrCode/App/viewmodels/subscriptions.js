@@ -1,8 +1,9 @@
-﻿define(['services/logger', 'services/backend'], function (logger, backend) {
+﻿define(['services/logger', 'services/backend', 'services/localstore'], function (logger, backend, localstore) {
     var vm = {
         activate: activate,
+        isRedeemAvailable: isRedeemAvailable,
         title: 'My subscriptions',
-        subscriptions: ko.observableArray()
+        subscriptions: ko.observableArray([]),
     };
 
     return vm;
@@ -12,14 +13,16 @@
         logger.log('Subscriptions View Activated', null, 'home', true);
         
         // Fetch subscriptions
-        backend.getSubscriptions(1234)
+        backend.getSubscriptions(localstore.getCustomerId())
             .then(function(data) {
-                logger.success("Fetched subscriptions");
                 vm.subscriptions(data.results);
             });
         
-
         return true;
+    }
+    
+    function isRedeemAvailable() {
+        return false;
     }
     //#endregion
 });

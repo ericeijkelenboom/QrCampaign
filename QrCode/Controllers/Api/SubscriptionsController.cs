@@ -15,7 +15,7 @@ namespace QrCode.Controllers.Api
         [HttpGet]
         public IQueryable<Subscription> Subscriptions()
         {
-            return _contextProvider.Context.Subscriptions;
+            return _contextProvider.Context.Subscriptions.Include("Campaign");
         }
 
         // ~/api/subscriptions/metadata 

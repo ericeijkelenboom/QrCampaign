@@ -35,8 +35,13 @@ namespace QrCode.Controllers.Api
             }
             else
             {
-                // Existing customer
-                subscription = customer.Subscriptions.FirstOrDefault(s => s.Campaign.Id == scan.CampaignId);
+                // Existing customer, check for existing subscription
+                subscription = (from s in _context.Subscriptions
+                               join cp in _context.Campaigns on s.Campaign equals cp
+                               join cst in _context.Customers on s.Customer equals cst
+                               where cst.Id == customer.Id && cp.Id == campaign.Id
+                               select s).FirstOrDefault();
+
                 if (subscription != null)
                 {
                     // Existing subscription

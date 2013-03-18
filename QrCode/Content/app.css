@@ -51,9 +51,9 @@ h2.page-title {
     font-family: "Segoe UI", Arial, Helvetica, sans-serif;
     font-size: 145%;
     font-weight: 900;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
     margin: 2% 0;
-    padding-left: 0px;
+    padding-left: 20px;
     -webkit-text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
     text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
     text-transform: uppercase;
@@ -62,7 +62,6 @@ h2.page-title {
     color: #0081C2;
 }
     span.title {
-        /*background: url(/content/images/icon.png) no-repeat left center;*/
         -moz-background-size: 45px;
         -o-background-size: 45px;
         -webkit-background-size: 45px;

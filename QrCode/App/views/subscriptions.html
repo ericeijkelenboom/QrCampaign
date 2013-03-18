@@ -1,6 +1,13 @@
-﻿<section>
-    <h2 class="page-title" data-bind="text: title"></h2>
-    
-    <div>data bind here</div>
-    
+﻿<section>   
+    <table data-bind="foreach: subscriptions">
+        <tr>
+            <td>
+                <span class="badge" data-bind="text: NumberOfPoints, css: {'badge-success': NumberOfPoints() > Campaign().NumberOfPointsBeforeRedeem()}"></span>
+            </td>
+            <td>
+                <span data-bind="text: Campaign().Description"></span>
+            </td>
+        </tr>
+    </table>
+
 </section>

@@ -1,8 +1,11 @@
 ﻿<section>
-    <h2 class="" data-bind="text: title"></h2>
     
     <div data-bind="if: numberOfPoints() > 0">
-        Congratulations! You now have earned <span data-bind="text: numberOfPoints"></span> points on <span data-bind="text: campaignDescription"></span>! 
-    </div>
+        You now have earned <span data-bind="text: numberOfPoints"></span> points on <span data-bind="text: campaignDescription"></span>! 
 
+        <div class="divider-vertical">&nbsp;</div>
+        
+        <a href="#subscriptions" class="btn">My subscriptions</a>
+    </div>
+    
 </section>
