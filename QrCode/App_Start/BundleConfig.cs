@@ -20,6 +20,7 @@ namespace QrCode
                 .Include("~/scripts/breeze.debug.js")
                 .Include("~/scripts/bootstrap.js")
                 .Include("~/scripts/moment.js")
+                .Include("~/scripts/toastr.js")
               );
 
             bundles.Add(

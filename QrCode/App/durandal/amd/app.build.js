@@ -7,8 +7,8 @@
   "paths": {
     "text": "durandal/amd/text"
   },
-  "baseUrl": "C:\\Users\\drexeeij\\Documents\\Visual Studio 2012\\Projects\\QrCode\\QrCode\\App",
-  "mainConfigFile": "C:\\Users\\drexeeij\\Documents\\Visual Studio 2012\\Projects\\QrCode\\QrCode\\App\\main.js",
+  "baseUrl": "c:\\Users\\drexeeij\\Documents\\Visual Studio 2012\\Projects\\QrCode\\QrCode\\App",
+  "mainConfigFile": "c:\\Users\\drexeeij\\Documents\\Visual Studio 2012\\Projects\\QrCode\\QrCode\\App\\main.js",
   "include": [
     "main-built",
     "main",
@@ -31,11 +31,13 @@
     "services/localstore",
     "services/logger",
     "viewmodels/details",
+    "viewmodels/home",
     "viewmodels/scan",
     "viewmodels/shell",
     "viewmodels/subscriptions",
     "text!views/details.html",
     "text!views/footer.html",
+    "text!views/home.html",
     "text!views/nav.html",
     "text!views/scan.html",
     "text!views/shell.html",
@@ -44,7 +46,7 @@
   "exclude": [],
   "keepBuildDir": true,
   "optimize": "uglify2",
-  "out": "C:\\Users\\drexeeij\\Documents\\Visual Studio 2012\\Projects\\QrCode\\QrCode\\App\\main-built.js",
+  "out": "c:\\Users\\drexeeij\\Documents\\Visual Studio 2012\\Projects\\QrCode\\QrCode\\App\\main-built.js",
   "pragmas": {
     "build": true
   },
