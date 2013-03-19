@@ -1,3 +1,7 @@
+# Auto-generated files from the Durandal optimizer
+QrCode/App/durandal/amd/app.build.js
+QrCode/App/main-built.js
+
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 [Bb]in/
 [Oo]bj/
