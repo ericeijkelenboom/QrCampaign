@@ -14,7 +14,7 @@
 
         var customerId = localstore.getCustomerId();
 
-        backend.scan(customerId, context.campaignId, context.qrId)
+        return backend.scan(customerId, context.campaignId, context.qrId)
             .then(function (data) {
                 localstore.setCustomerId(data.CustomerId);
 
@@ -22,8 +22,6 @@
                 vm.numberOfPoints(data.Subscription.NumberOfPoints);
                 vm.campaignDescription(data.CampaignDescription);
             });
-
-        return true;
     }
     //#endregion
 });
