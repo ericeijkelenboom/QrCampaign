@@ -20,11 +20,13 @@ define(['services/logger'],
                 .fail(queryFailed);
         }
 
-        function getSubscriptions(customerId) {
+        function getSubscriptions(customerId, subscriptions) {
             var query = breeze.EntityQuery.from("Subscriptions").where("Customer.Id", "==", customerId);
 
-            return manager
-                .executeQuery(query)
+            return manager.executeQuery(query)
+                .then(function(data) {
+                    subscriptions(data.results);
+                })
                 .fail(queryFailed);
         }
         

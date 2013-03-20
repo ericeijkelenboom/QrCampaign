@@ -1,0 +1,5 @@
+﻿* Load all initial data (subscriptions) in shell, not in subscriptions, to avoid waiting time after the progress bar disappears. 
+* In viewmodel: use initialized flag to avoid server lookups when data has already been fetched (refetch can the be forced when needed).
+* Use model classes (models/subscription) that take a json model object and convert it to an observable (possibly by using the mapping plugin). 
+  The model classes will also add all required computed functions. 
+  This can be used for turning single subscriptoins into observables, and only updating the relevant one after a scan? 

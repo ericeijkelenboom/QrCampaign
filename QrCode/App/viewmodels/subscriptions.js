@@ -12,12 +12,13 @@
     
     function activate() {
         logger.log('Subscriptions View Activated', null, 'home', true);
-        
+
+        return refresh();
+    }
+    
+    function refresh() {
         // Fetch subscriptions
-        return backend.getSubscriptions(localstore.getCustomerId())
-            .then(function(data) {
-                vm.subscriptions(data.results);
-            });
+        return backend.getSubscriptions(localstore.getCustomerId(), vm.subscriptions);
     }
     
     function isRedeemAvailable(subscription) {

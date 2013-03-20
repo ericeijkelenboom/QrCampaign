@@ -245,6 +245,7 @@
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <None Include="Scripts\breeze.intellisense.js" />
+    <Content Include="Notes.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\breeze.debug.js" />
@@ -317,12 +318,9 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>-->
-  
   <Target Name="AfterBuild" DependsOnTargets="Optimize">
   </Target>
-  
   <Target Name="Optimize" Condition="'$(Configuration)' == 'Release'">
-	<Exec WorkingDirectory="./App/durandal/amd/" Command="optimizer.exe"/>
+    <Exec WorkingDirectory="./App/durandal/amd/" Command="optimizer.exe" />
   </Target>
-  
 </Project>
