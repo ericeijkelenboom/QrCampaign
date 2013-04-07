@@ -1,5 +1,22 @@
 ﻿* Load all initial data (subscriptions) in shell, not in subscriptions, to avoid waiting time after the progress bar disappears. 
-* In viewmodel: use initialized flag to avoid server lookups when data has already been fetched (refetch can the be forced when needed).
+* In viewmodel: use initialized flag to avoid server lookups when data has already been fetched (refetch can the be forced when needed). 
+   -> move this to the datacontext, breeze can easily check its cache
 * Use model classes (models/subscription) that take a json model object and convert it to an observable (possibly by using the mapping plugin). 
   The model classes will also add all required computed functions. 
   This can be used for turning single subscriptoins into observables, and only updating the relevant one after a scan? 
+* Config module for all config settings, like routes, constants, etc
+* breeze.NamingConvertion.camelCase.setAsDefault();
+* Viewmodels on client side: pass the breeze metadatacontext to the models module, and configure the metadatacontext with view specific properties and functions. Client side viewmodel = ko computed. 
+* Datacontext: when filling observableArray, make a check that an array has been passed, and fill it. If no array has been passed, the backend query will just run and breeze will cache the results, to be accessed lateron. 
+* KO list with click events: lots of events is bad performance. Better: container listens on click on children. Use jquery on() and ko.dataFor. 
+* All interaction with the DOM should be called from durandals viewAttached(view) method! 
+* Breeze has a query for fetching single entity 
+* If we want to get partials (fx to save data in a list) we can use a partial flag (getting data efficiently)
+* Breeze hasChangesChanged: subscribe to this event to be notified of changes in the entities (set your own flag and bind to view)
+* Intercept user navigation with canActivate, canDeactivate (and activate/decactivate)
+
+
+TODO: 
+Investigate promises
+Viewmodels in SPA, always client side? 
+Business logic?

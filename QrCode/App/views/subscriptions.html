@@ -1,16 +1,26 @@
-﻿<section>
-    
-    <span data-bind="text: subscriptions().length"></span> subscriptions
+﻿<section id="subscriptions-view" class="view">
+    <header>
+         
+        <a class="btn btn-info btn-force-refresh pull-right" data-bind="click: refresh" href="#"><i class="icon-refresh icon-white"></i> Refresh</a>
 
-    <table data-bind="foreach: subscriptions">
-        <tr>
-            <td>
-                <span class="badge" data-bind="text: NumberOfPoints, css: {'badge-success': $parent.isRedeemAvailable($data)}"></span>
-            </td>
-            <td>
-                <span data-bind="text: Campaign().Description"></span>
-            </td>
-        </tr>
-    </table>
+        <div class="article-counter">
+            <address data-bind="text: subscriptions().length"></address>
+            <address>found</address>
+        </div>
+    </header>
+
+    <section class="view-list" data-bind="foreach: subscriptions">
+        <article class="article-left-content">
+            <div class="session-brief row-fluid" title="Go to subscription details">
+                
+                <div class="span11" data-bind="text: campaign().description" />
+                
+                <div class="span1">
+                    <div class="badge" data-bind="text: numberOfPoints, css: {'badge-success': $parent.isRedeemAvailable($data)}"></div>
+                </div>
+
+            </div>
+        </article>
+    </section>
 
 </section>

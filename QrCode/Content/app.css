@@ -32,6 +32,10 @@ h1, h2, h3 {
     color: #777;
 }
 
+header {
+    position: relative;   
+}
+
 section.main {
     margin-top: 60px;
 }

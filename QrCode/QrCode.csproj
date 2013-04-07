@@ -209,7 +209,7 @@
     <Content Include="App\durandal\widget.js" />
     <Content Include="App\main-built.js" />
     <Content Include="App\main.js" />
-    <Content Include="App\services\backend.js" />
+    <Content Include="App\services\datacontext.js" />
     <Content Include="App\services\localstore.js" />
     <Content Include="App\services\logger.js" />
     <Content Include="App\viewmodels\details.js" />
@@ -239,6 +239,7 @@
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\icon.png" />
+    <Content Include="Content\styles.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
