@@ -1,4 +1,4 @@
-﻿define(['services/logger', 'services/datacontext', 'services/localstore'], function (logger, datacontext, localstore) {
+﻿define(['services/logger', 'services/backend', 'services/localstore'], function (logger, backend, localstore) {
     var vm = {
         title: 'My subscriptions',
         subscriptions: ko.observableArray([]),
@@ -19,11 +19,11 @@
     
     function refresh() {
         // Fetch subscriptions
-        return datacontext.getSubscriptions(localstore.getCustomerId(), vm.subscriptions);
+        return backend.getSubscriptions(localstore.getCustomerId(), vm.subscriptions);
     }
     
     function isRedeemAvailable(subscription) {
-        return subscription.numberOfPoints() >= subscription.campaign().numberOfPointsBeforeRedeem();
+        return subscription.NumberOfPoints() >= subscription.Campaign().NumberOfPointsBeforeRedeem();
     }
 
     //#endregion
