@@ -1,5 +1,5 @@
-﻿define(['durandal/system', 'durandal/plugins/router', 'services/logger'],
-    function (system, router, logger) {
+﻿define(['durandal/system', 'durandal/plugins/router', 'services/logger', 'services/datacontext', 'services/localstore'],
+    function (system, router, logger, datacontext, localstore) {
         var shell = {
             activate: activate,
             router: router
@@ -11,13 +11,13 @@
         function activate() {
             return boot();
         }
-
+        
         function boot() {
             router.mapNav('subscriptions');
             router.mapNav('scan/:campaignId/:qrId');
-            
+
             log('QR has been loaded!', null, true);
-            
+
             return router.activate('subscriptions');
         }
 
