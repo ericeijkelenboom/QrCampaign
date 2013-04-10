@@ -1,10 +1,11 @@
-﻿define(['services/logger', 'services/datacontext', 'services/localstore'],
-    function (logger, datacontext, localstore) {
+﻿define(['durandal/plugins/router', 'services/logger', 'services/datacontext', 'services/localstore'],
+    function (router, logger, datacontext, localstore) {
         var vm = {
             activate: activate,
             title: ko.observable('Scanning...'),
             campaignDescription: ko.observable(''),
-            numberOfPoints: ko.observable(0)
+            numberOfPoints: ko.observable(0),
+            showCampaigns: showCampaigns
         };
 
         return vm;
@@ -16,17 +17,25 @@
             var customerId = localstore.getCustomerId();
 
             return datacontext.scan(customerId, context.campaignId, context.qrId)
-                .then(scanSucceeded)
-                .then(datacontext.getSubscriptions(customerId, null, true)); // refresh subscription data
+                .then(scanSucceeded);
         }
     
         function scanSucceeded(data) {
-            localstore.setCustomerId(data.CustomerId);
+            // Store customer id 
+            localstore.setCustomerId(data.customerId);
 
+            // Update view model
             vm.title('Congratulations!');
-            vm.numberOfPoints(data.Subscription.NumberOfPoints);
-            vm.campaignDescription(data.CampaignDescription);
+            vm.numberOfPoints(data.subscription.numberOfPoints);
+            vm.campaignDescription(data.campaignDescription);
+            
+            // Update subscriptions
+            datacontext.getSubscriptions(data.customerId, null, true);
         }
     
+        function showCampaigns() {
+            router.navigateTo('#subscriptions');
+        }
+
         //#endregion
 });

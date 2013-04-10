@@ -1,10 +1,8 @@
 ﻿<nav class="navbar navbar-fixed-top">
     <div class="navbar-inner">
-        <a class="brand" href="/">
-            <div data-bind="with: router.activeItem">
-                <h1 class="title" data-bind="text: title"></h1>
-            </div>
-        </a>
+        <div data-bind="with: router.activeItem">
+            <h1 class="page-title" data-bind="text: title"></h1>
+        </div>
     </div>
 </nav>
 

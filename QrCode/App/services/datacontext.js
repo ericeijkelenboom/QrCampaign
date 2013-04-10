@@ -1,15 +1,21 @@
 define(['services/logger'],
     function (logger) {
         var datacontext = {
+            init: init,
             getSubscriptions: getSubscriptions,
+            getSubscriptionDetails: getSubscriptionDetails,
             scan: scan
         };
 
-        var EntityQuery = breeze.EntityQuery;
+        var entityQuery = breeze.EntityQuery;
         var manager = configureBreezeManager();
-        
+     
         return datacontext;
-        
+     
+        function init() {
+            return manager.fetchMetadata();
+        }
+
         function scan(customerId, campaignId, qrCodeId) {
             var data = {
                 'CampaignId': campaignId,
@@ -24,13 +30,14 @@ define(['services/logger'],
         function getSubscriptions(customerId, subscriptions, forceRemote) {
             if (!forceRemote) {
                 var s = getLocal('Subscriptions', 'campaign.description');
-                if (s && s.length > 0) {
+                // Check if length > 1, because if we enter the app on a details page, the subscription list contains 1 item
+                if (s && s.length > 1) {
                     subscriptions(s);
                     return Q.resolve();
                 }
             }
 
-            var query = EntityQuery.from("Subscriptions")
+            var query = entityQuery.from("Subscriptions")
                 .where("customer.id", "==", customerId)
                 .orderBy('campaign.description');
 
@@ -45,21 +52,27 @@ define(['services/logger'],
             }
         }
         
+        function getSubscriptionDetails(id) {
+            return manager.fetchEntityByKey("Subscription", id, true)
+                .fail(queryFailed);
+        }
+
         function getLocal(resource, ordering) {
-            var query = EntityQuery.from(resource)
+            var query = entityQuery.from(resource)
                 .orderBy(ordering);
 
             try {
                 return manager.executeQueryLocally(query);    
             }
             catch(exception) {
-                // Could not retrieve results from local cache (no metadata on very first run)
+                // Could not retrieve results from local cache
                 return null;
             }
         }
         
         function configureBreezeManager() {
             breeze.NamingConvention.camelCase.setAsDefault();
+
             var mgr = new breeze.EntityManager('api/subscriptions');
             return mgr;
         }
@@ -67,9 +80,5 @@ define(['services/logger'],
         function queryFailed(error) {
             logger.logError("Query failed: " + error.message);
         }
-        
-        function log(msg, data, showToast) {
-            logger.log(msg, data, system.getModuleId(shell), showToast);
-        }
-        
+      
     });

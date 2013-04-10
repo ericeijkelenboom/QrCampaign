@@ -9,12 +9,14 @@
 
         //#region Internal Methods
         function activate() {
-            return boot();
+            return datacontext.init()
+            .then(boot);
         }
         
         function boot() {
             router.mapNav('subscriptions');
             router.mapNav('scan/:campaignId/:qrId');
+            router.mapNav('subscription-details/:id');
 
             log('QR has been loaded!', null, true);
 

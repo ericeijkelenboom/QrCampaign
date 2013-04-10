@@ -1,0 +1,14 @@
+﻿<section data-bind="with: subscription">
+    <!--<h2 class="page-title" data-bind="text: campaign().description"></h2>-->
+    
+    <div>
+        You have collected <span data-bind="text: numberOfPoints" /> out of <span data-bind="text: campaign().numberOfPointsBeforeRedeem" /> points
+    </div>
+
+</section>
+
+
+<section class="btn-group">
+    <div class="btn" data-bind="click: navigateToSubscriptions">Back</div>
+    <div class="btn btn-primary" data-bind="visible: isRedeemAvailable($data.subscription()), click: redeem">Redeem!</div>
+</section>  
