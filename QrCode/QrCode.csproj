@@ -209,7 +209,6 @@
     <Content Include="App\durandal\widget.js" />
     <Content Include="App\main-built.js" />
     <Content Include="App\main.js" />
-    <Content Include="App\services\subscription-helper.js" />
     <Content Include="App\services\datacontext.js" />
     <Content Include="App\services\localstore.js" />
     <Content Include="App\services\logger.js" />

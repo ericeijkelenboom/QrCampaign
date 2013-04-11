@@ -1,12 +1,12 @@
-﻿define(['durandal/plugins/router', 'services/logger', 'services/datacontext', 'services/localstore', 'services/subscription-helper'],
-    function (router, logger, datacontext, localstore, helper) {
+﻿define(['durandal/plugins/router', 'services/logger', 'services/datacontext', 'services/localstore'],
+    function (router, logger, datacontext, localstore) {
         var vm = {
-            title: 'My campaigns',
-            subscriptions: ko.observableArray([]),
             activate: activate,
             viewAttached: viewAttached,
             refresh: refresh,
-            isRedeemAvailable: helper.isRedeemAvailable,
+            isRedeemAvailable: isRedeemAvailable,
+            title: 'My campaigns',
+            subscriptions: ko.observableArray([]),
         };
 
         return vm;
@@ -30,12 +30,14 @@
             return datacontext.getSubscriptions(localstore.getCustomerId(), vm.subscriptions, forceRemote);
         }
     
-        
-
         function showSubscriptionDetails(event) {
             var subscription = ko.dataFor(event.target);
 
             router.navigateTo('#subscription-details/' + subscription.id());
+        }
+        
+        function isRedeemAvailable(subscription) {
+            return subscription.numberOfPoints() >= subscription.campaign().numberOfPointsBeforeRedeem();
         }
 
         //#endregion

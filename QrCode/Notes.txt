@@ -20,3 +20,9 @@ TODO:
 Investigate promises
 Viewmodels in SPA, always client side? 
 Business logic?
+
+
+
+Issues: 
+Breeze: non-crud operations: breeze cannot be used. Direct service call to server side update puts breeze cache out of date. 
+Breeze: client-tweaking of model + update can cause security issue. Be very careful.

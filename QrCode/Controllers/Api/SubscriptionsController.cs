@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Http;
 using Breeze.WebApi;
+using Newtonsoft.Json.Linq;
 using QrCode.Models;
 using QrCode.Persistence;
 
@@ -16,6 +17,13 @@ namespace QrCode.Controllers.Api
         public IQueryable<Subscription> Subscriptions()
         {
             return _contextProvider.Context.Subscriptions.Include("Campaign");
+        }
+
+        [HttpPost]
+        public SaveResult SaveChanges(JObject saveBundle)
+        {
+            // TODO: a custom EFContextProvider and save Interception
+            return _contextProvider.SaveChanges(saveBundle);
         }
 
         // ~/api/subscriptions/metadata 

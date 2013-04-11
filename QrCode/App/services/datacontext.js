@@ -4,7 +4,8 @@ define(['services/logger'],
             init: init,
             getSubscriptions: getSubscriptions,
             getSubscriptionDetails: getSubscriptionDetails,
-            scan: scan
+            scan: scan,
+            saveChanges: saveChanges
         };
 
         var entityQuery = breeze.EntityQuery;
@@ -55,6 +56,10 @@ define(['services/logger'],
         function getSubscriptionDetails(id) {
             return manager.fetchEntityByKey("Subscription", id, true)
                 .fail(queryFailed);
+        }
+
+        function saveChanges() {
+            return manager.saveChanges();
         }
 
         function getLocal(resource, ordering) {

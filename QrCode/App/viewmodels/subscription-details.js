@@ -1,12 +1,20 @@
-﻿define(['durandal/plugins/router', 'services/logger', 'services/datacontext', 'services/subscription-helper'],
-    function (router, logger, datacontext, helper) {
+﻿define(['durandal/plugins/router', 'services/logger', 'services/datacontext'],
+    function (router, logger, datacontext) {
+
+        var subscription = ko.observable();
+
+        var numberOfRedeemsAvailable = ko.computed(function () {
+            if (!subscription()) return 0;
+            
+            return Math.floor(subscription().numberOfPoints() / subscription().campaign().numberOfPointsBeforeRedeem());
+        });
+
         var vm = {
             activate: activate,
             navigateToSubscriptions: navigateToSubscriptions,
-            isRedeemAvailable: helper.isRedeemAvailable,
+            numberOfRedeemsAvailable: numberOfRedeemsAvailable,
             redeem: redeem,
-        
-            subscription: ko.observable(''),
+            subscription: subscription,
             title: ko.observable(''),
         };
     
@@ -29,9 +37,19 @@
         function navigateToSubscriptions() {
             router.navigateTo('#subscriptions');
         }
-    
+        
         function redeem() {
-            alert('redeem! :)');
+            // Update number of points
+            var numerOfPoints = vm.subscription().numberOfPoints() - vm.subscription().campaign().numberOfPointsBeforeRedeem();
+            vm.subscription().numberOfPoints(numerOfPoints);
+
+            // Save changes
+            datacontext.saveChanges()
+                .then(redeemSucceeded);
+            
+            function redeemSucceeded(data) {
+                logger.log('Redeem succeeded!', null, null, true);
+            }
         }
     
         //#endregion

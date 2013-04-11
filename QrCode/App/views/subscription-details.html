@@ -10,5 +10,5 @@
 
 <section class="btn-group">
     <div class="btn" data-bind="click: navigateToSubscriptions">Back</div>
-    <div class="btn btn-primary" data-bind="visible: isRedeemAvailable($data.subscription()), click: redeem">Redeem!</div>
+    <div class="btn btn-primary" data-bind="visible: numberOfRedeemsAvailable() > 0, click: redeem">Redeem!</div>
 </section>  
