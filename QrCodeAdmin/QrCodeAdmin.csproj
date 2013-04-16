@@ -168,9 +168,11 @@
     <Content Include="App\durandal\widget.js" />
     <Content Include="App\main.js" />
     <Content Include="App\services\logger.js" />
+    <Content Include="App\viewmodels\campaigns.js" />
     <Content Include="App\viewmodels\details.js" />
     <Content Include="App\viewmodels\home.js" />
     <Content Include="App\viewmodels\shell.js" />
+    <Content Include="App\views\campaigns.html" />
     <Content Include="App\views\details.html" />
     <Content Include="App\views\footer.html" />
     <Content Include="App\views\home.html" />
