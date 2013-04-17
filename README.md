@@ -1,4 +1,5 @@
 QrCampaign
 ==========
 
-Single Page Application using Durandal.js, Breeze.js and MVC Web Api.
+SPA experiments with Durandal, Knockout, Breeze and MVC Web Api.
+
