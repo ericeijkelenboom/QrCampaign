@@ -1,4 +1,5 @@
 using System.Web.Http;
+using Breeze.WebApi;
 
 [assembly: WebActivator.PreApplicationStartMethod(
     typeof(QrCode.App_Start.BreezeWebApiConfig), "RegisterBreezePreStart")]

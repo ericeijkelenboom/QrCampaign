@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Breeze.WebApi;
 
 namespace QrCode
 {
@@ -10,6 +11,8 @@ namespace QrCode
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new BreezeSimpleCorsHandler());
+
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

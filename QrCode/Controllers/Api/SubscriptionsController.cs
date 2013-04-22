@@ -19,6 +19,13 @@ namespace QrCode.Controllers.Api
             return _contextProvider.Context.Subscriptions.Include("Campaign");
         }
 
+        // ~/api/subscriptions/subscriptions
+        [HttpGet]
+        public IQueryable<Campaign> Campaigns()
+        {
+            return _contextProvider.Context.Campaigns;
+        }
+
         [HttpPost]
         public SaveResult SaveChanges(JObject saveBundle)
         {

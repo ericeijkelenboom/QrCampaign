@@ -152,6 +152,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BreezeSimpleCorsHandler.cs" />
     <Compile Include="App_Start\BreezeWebApiConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\HotTowelConfig.cs" />
@@ -316,10 +317,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-  
   <Target Name="BeforeBuild" DependsOnTargets="Optimize">
   </Target>
-  
   <!--<Target Name="AfterBuild">
   </Target>-->
   <Target Name="Optimize" Condition="'$(Configuration)' == 'Release'">

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Breeze.WebApi;
 
 namespace QrCodeAdmin
 {
@@ -14,6 +15,8 @@ namespace QrCodeAdmin
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new BreezeSimpleCorsHandler());
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
