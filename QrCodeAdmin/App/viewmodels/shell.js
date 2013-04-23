@@ -1,5 +1,5 @@
-﻿define(['durandal/system', 'durandal/plugins/router', 'services/logger'],
-    function (system, router, logger) {
+﻿define(['durandal/system', 'durandal/plugins/router', 'services/logger', 'services/datacontext'],
+    function (system, router, logger, datacontext) {
         var shell = {
             activate: activate,
             router: router
@@ -9,12 +9,12 @@
 
         //#region Internal Methods
         function activate() {
-            return boot();
+            return datacontext.init().then(boot);
         }
 
         function boot() {
             router.mapNav('home');
-            router.mapNav('details');
+            router.mapRoute('details/:id', 'details', 'details', false);
             router.mapNav('campaigns');
             log('Hot Towel SPA Loaded!', null, true);
             return router.activate('home');

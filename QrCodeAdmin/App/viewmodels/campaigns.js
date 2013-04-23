@@ -1,7 +1,9 @@
-﻿define(['services/logger', 'services/datacontext'], function (logger, datacontext) {
+﻿define(['services/logger', 'services/datacontext', 'durandal/plugins/router'], function (logger, datacontext, router) {
     var vm = {
         activate: activate,
-        title: 'All campaigns'
+        title: 'All campaigns',
+        campaigns: ko.observableArray([]),
+        showDetails: showDetails
     };
 
     return vm;
@@ -10,9 +12,16 @@
     function activate() {
         logger.log('Campaigns View Activated', null, 'campaigns', true);
 
-        datacontext.getCampaigns();
+        return datacontext.getCampaigns()
+            .then(querySucceeded);
+    }
+    
+    function querySucceeded(data) {
+        vm.campaigns(data.results);
+    }
 
-        return true;
+    function showDetails(campaign) {
+        router.navigateTo('#details/' + campaign.id());
     }
     //#endregion
 });

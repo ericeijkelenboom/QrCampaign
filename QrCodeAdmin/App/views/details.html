@@ -1,3 +1,16 @@
-﻿<section>
-    <h2 class="page-title" data-bind="text: title"></h2>
+﻿<section data-bind="with: campaign">
+    <h2 class="page-title" data-bind="text: description"></h2>
+    
+    <form>
+        <label>Description</label>
+        <input data-bind="value: description" type="text" />
+
+        <label>Number of points before redeem</label>
+        <input data-bind="value: numberOfPointsBeforeRedeem" type="text" />
+        
+        <br/>
+
+        <button class="btn btn-primary" data-bind="click: $parent.save" type="submit">Save</button>
+        <button class="btn" data-bind="click: $parent.cancel" type="submit">Cancel</button>
+    </form>
 </section>

@@ -15,8 +15,6 @@ namespace QrCodeAdmin
     {
         protected void Application_Start()
         {
-            GlobalConfiguration.Configuration.MessageHandlers.Add(new BreezeSimpleCorsHandler());
-
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
