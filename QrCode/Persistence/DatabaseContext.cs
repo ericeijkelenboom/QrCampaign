@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using Devtalk.EF.CodeFirst;
 using QrCode.Models;
 
 namespace QrCode.Persistence
@@ -15,37 +16,38 @@ namespace QrCode.Persistence
 
         public DatabaseContext() : base(ConnectionStringName)
         {
-            Database.SetInitializer(new DatabaseInitializer());
+            Database.SetInitializer(new DontDropDbJustCreateTablesIfModelChanged<DatabaseContext>());
+            DatabaseSeeder.Seed(this);
         }
     }
 
-    public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<DatabaseContext>
+    class DatabaseSeeder
     {
-        protected override void Seed(DatabaseContext context)
+        public static void Seed(DatabaseContext context)
         {
             context.Shops.Add(new Shop
-                {
-                    Name = "7 eleven",
-                    Campaigns = new List<Campaign>
+            {
+                Name = "7 eleven",
+                Campaigns = new List<Campaign>
                         {
                             CreateCampaign("Free coffee", 2),
                             CreateCampaign("Free dougnut", 5),
                         }
-                });
+            });
 
             context.Shops.Add(new Shop
-                {
-                    Name = "Noma",
-                    Campaigns = new List<Campaign>
+            {
+                Name = "Noma",
+                Campaigns = new List<Campaign>
                         {
                             CreateCampaign("All you can eat", 10),
                         }
-                });
+            });
 
             context.SaveChanges();
         }
 
-        private Campaign CreateCampaign(string description, int numberOfPointsBeforeRedeem)
+        private static Campaign CreateCampaign(string description, int numberOfPointsBeforeRedeem)
         {
             return new Campaign
             {

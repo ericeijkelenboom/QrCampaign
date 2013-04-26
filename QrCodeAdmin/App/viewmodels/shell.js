@@ -14,7 +14,7 @@
 
         function boot() {
             router.mapNav('home');
-            router.mapRoute('details/:id', 'details', 'details', false);
+            router.mapRoute('details/:id', 'viewmodels/details', 'details', false);
             router.mapNav('campaigns');
             log('Hot Towel SPA Loaded!', null, true);
             return router.activate('home');
