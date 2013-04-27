@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
-using Devtalk.EF.CodeFirst;
 using QrCode.Models;
 
 namespace QrCode.Persistence
@@ -16,14 +15,13 @@ namespace QrCode.Persistence
 
         public DatabaseContext() : base(ConnectionStringName)
         {
-            Database.SetInitializer(new DontDropDbJustCreateTablesIfModelChanged<DatabaseContext>());
-            DatabaseSeeder.Seed(this);
+            Database.SetInitializer(new DatabaseInitializer());
         }
     }
 
-    class DatabaseSeeder
+    class DatabaseInitializer : DropCreateDatabaseIfModelChanges<DatabaseContext>
     {
-        public static void Seed(DatabaseContext context)
+        protected override void Seed(DatabaseContext context)
         {
             context.Shops.Add(new Shop
             {
